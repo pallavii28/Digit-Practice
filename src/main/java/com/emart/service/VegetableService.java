@@ -32,10 +32,18 @@ public class VegetableService {
 		return productRepository.findById(id);
 	}
 
-	public Vegetable updateProductById(Vegetable vegetable) {
-		
-		 return productRepository.save(vegetable);
-	}
+	/*
+	 * public Vegetable updateProductById(Vegetable vegetable) {
+	 * 
+	 * return productRepository.save(vegetable); }
+	 */
 
+	public Vegetable updateProductById(Integer id , Vegetable vegetable) {
+		if (!productRepository.existsById(id))
+			throw new IllegalArgumentException("Product Not Found : " + id);
+
+
+			return productRepository.save(vegetable);
+		}
 
 }
