@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.emart.model.Vegetable;
 import com.emart.service.VegetableService;
 
@@ -39,12 +38,18 @@ public class VegetableController {
 		Optional<Vegetable> veg=productService.getProductById(id);
 		return new ResponseEntity<>(veg, HttpStatus.OK);
 	}
-	@PutMapping("/{id}")
-	public ResponseEntity<Vegetable> updateProductById(@RequestBody Vegetable vegetable){
-		Vegetable veg=productService.updateProductById(vegetable);
-		return new ResponseEntity<>(veg, HttpStatus.OK);
-	}
+	/*
+	 * @PutMapping("/{id}") public ResponseEntity<Vegetable>
+	 * updateProductById(@RequestBody Vegetable vegetable){ Vegetable
+	 * veg=productService.updateProductById(vegetable); return new
+	 * ResponseEntity<>(veg, HttpStatus.OK); }
+	 */
 	
+
+	@PutMapping("/{id}")
+	public Vegetable updateProductById( @PathVariable("id") Integer id, @RequestBody Vegetable veg) {
+	return productService.updateProductById(id, veg);
+	}
 	
 	
 }
