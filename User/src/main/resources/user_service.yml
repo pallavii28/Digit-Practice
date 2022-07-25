@@ -1,0 +1,24 @@
+serviceMaps:
+  serviceName: User
+  mappings:
+    - version: 1.0
+      description: users data in user_table
+      fromTopic: save-property-registry
+      isTransaction: true
+      queryMaps:
+
+    - query: INSERT INTO user_table(id,name,mob_number,email,address,password) values(?,?,?,?,?,?);
+      basePath: UserEntity
+        jsonMaps:
+
+          - jsonPath: $.UserEntity.id
+
+          - jsonPath: $.UserEntity.name
+
+          - jsonPath: $.UserEntity.mobNumber
+
+          -jsonPath: $.UserEntity.email
+
+          - jsonPath: $.UserEntity.address
+
+          -jsonPath: $.UserEntity.password

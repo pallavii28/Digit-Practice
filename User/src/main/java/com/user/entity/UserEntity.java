@@ -1,57 +1,36 @@
 package com.user.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name="user")
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@Table(name="userTable")
 public class UserEntity {
+	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	int id;
 
-	 @Id	
-	  @GeneratedValue(strategy = GenerationType.AUTO)
-	  
-	  int id;
-	  
-	  String name;
-	  
-	  String address;
-	  
-	  String mobNumber;
+	String name;
 
-	public int getId() {
-		return id;
-	}
+	String mobNumber;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	String emailId;
 
-	public String getName() {
-		return name;
-	}
+	String address;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	String password;
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getMobNumber() {
-		return mobNumber;
-	}
-
-	public void setMobNumber(String mobNumber) {
-		this.mobNumber = mobNumber;
-	}
-	  
-	  
 }
